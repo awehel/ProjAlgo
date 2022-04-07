@@ -1,21 +1,21 @@
 const nums = [2, 4, 6, 8, 10]
 
 //Reverse
-// const reverse = function (arr){
+const reverse = function (arr){
 
-//     for(var i = 0; i<Math.floor(arr.length/2); i++){
-//         var temp = arr[i]
-//         arr[i] = arr[arr.length-1-i]
-//         arr[arr.length-1-i] = temp
-//     }
+    for(var i = 0; i<Math.floor(arr.length/2); i++){
+        var temp = arr[i]
+        arr[i] = arr[arr.length-1-i]
+        arr[arr.length-1-i] = temp
+    }
     
-//     return arr
-// }
+    return arr
+}
 
-// var y = reverse(nums)
-// console.log(y)
+var y = reverse(nums)
+console.log(y)
 
-//Rotate
+Rotate
 
 
 //Filter Range

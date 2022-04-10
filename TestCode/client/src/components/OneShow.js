@@ -26,7 +26,9 @@ const OneShow = (props)=>{
     const submitHandler = ()=>{
         
         axios
-            .post(`http://localhost:8000/api/show`, oneShow)
+            .post(`http://localhost:8000/api/test`, oneShow, {
+                withCredentials: true
+            })
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
@@ -36,6 +38,7 @@ const OneShow = (props)=>{
                 console.log(err.response);
                 console.log(err.response.data);
                 console.log(err.response.data.errors);
+                navigate("/")
             });
     }
 

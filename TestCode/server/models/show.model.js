@@ -13,6 +13,12 @@ const ShowSchema = new mongoose.Schema(
         showComplete:{
             type:Boolean
         },
+        savedBy:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:"User"
+            }
+        ]
         
     
 

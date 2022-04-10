@@ -1,6 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import AppBar from "./AppBar";
+import Users from "./Users"
+import MyContext from "../context/MyContext";
 
 const Home = (props)=>{
 
@@ -9,6 +12,8 @@ const Home = (props)=>{
     const [loaded, setLoaded] = useState(false)
 
     const [showData, setShowData] = useState({})
+
+    const context = useContext(MyContext)
 
     useEffect(() => {
         const getShows = async () => {
@@ -30,8 +35,14 @@ const Home = (props)=>{
     return(
         
         <div>
+            <AppBar/>
             <h1>Home Page</h1>
-            <Link to="/search">Search for a show</Link>
+            
+            {
+                context.loggedIn?
+                <Link to="/search"><p>Search for a show</p></Link>:null
+            }
+            <Users/>
             
             {
                 loaded?

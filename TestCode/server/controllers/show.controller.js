@@ -71,10 +71,10 @@ module.exports = {
                         .catch((err)=>{
                             console.log("testSave " + err)
                         })
-                    activeUser.showsLiked.push(updatedShow)
-                    activeUser = await activeUser.save()
-                    updatedShow.savedBy.push(activeUser)
-                    updatedShow = updatedShow.save()
+                    // activeUser.showsLiked.push(updatedShow)
+                    // activeUser = await activeUser.save()
+                    // updatedShow.savedBy.push(activeUser)
+                    // updatedShow = updatedShow.save()
 
                     return updatedShow
                 }

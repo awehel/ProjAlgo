@@ -1,0 +1,18 @@
+[REQUIRED] Name: Ahmed Wehelie
+[REQUIRED] Project Title: Reading/Watch List
+[REQUIRED] Project Stack: MERN
+[REQUIRED] GitHub Repo Link: not created yet
+
+[REQUIRED] Project Description: The application will allow users to save a list of books or shows that they want to keep track of. The project will focus on either books or shows depending on how workable the apis for each are - as I want to populate the book/show cover and information automatically using either the NYT Best Seller api or The Movie DB api. Users will be able to view their own profile or the profiles of other users. They can also mark books/shows as completed, and remove entries they have added. 
+
+[REQUIRED] New Programming Concept(s) I'm Planning to Learn: Working with 3rd party APIs. Also plan to build the site using Material UI because I want to learn to build pages with styled components, as I have only used manual CSS/Bootstrap so far.
+
+[REQUIRED] Week 1 Features (to show at Review during Week 2): Users are abble to save books to their profile.
+- 
+
+[REQUIRED] Week 2 Features (to show at first office hour/lecture of Week 3): Deployed application with comment board on profile pages
+- ***Finish CSS work (could be Bootstrap or another framework too instead of CSS)***
+- 
+
+[REQUIRED] Product Backlog (If I have more time after completing my MVP, I'll start to work on...): Comments on individual shows/books.
+- 

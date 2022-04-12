@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import AddIcon from "@mui/icons-material/Add";
+import { Grid } from "@mui/material";
+import { Box } from "@mui/system";
+import NavBar from "./NavBar";
+
 
 const OneShow = (props)=>{
-
+    
     const {id} = useParams()
-
-    const id2 = 110492
 
     const navigate = useNavigate()
 
@@ -42,24 +49,46 @@ const OneShow = (props)=>{
             });
     }
 
+    
+
     return (
-        <div>
-            <h2 value="newName">{oneShow.name}</h2>
-            <a href="/">Home</a>
-            <div>
-                <img
-                    src={`https://image.tmdb.org/t/p/w500${oneShow.backdrop_path}`}
-                    alt={oneShow.name}
-                />
-                <p>
-                    {oneShow.overview}
-                </p>
-                <p>
-                    {oneShow.tagline}
-                </p>
-                <button onClick={submitHandler}>Add show</button>
-            </div>
-        </div>
+        <Container sx={{backgroundColor: '#F0F8ED', height:'100vh', width:'100vw'}}>
+            
+            <NavBar/>
+            <Typography 
+                value="newName" 
+                variant="h4"
+                style={{fontWeight:600}}
+                >
+                {oneShow.name}
+            </Typography>
+            <Button variant="contained" color="secondary" gutterBottom href="/" startIcon={<HomeIcon/>}>
+                Home
+            </Button>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={6}> 
+                    <img
+                        src={`https://image.tmdb.org/t/p/w500${oneShow.backdrop_path}`}
+                        alt={oneShow.name}
+                    />
+                    <Button
+                        variant="contained"
+                        size="medium"
+                        onClick={submitHandler}
+                        startIcon={<AddIcon/>}
+                    >
+                        Add show
+                    </Button>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6}>
+                    <Typography variant="subtitle1">{oneShow.overview}</Typography>
+                    <Typography variant="subtitle2">"{oneShow.tagline}"</Typography>
+                    <br/>
+                    
+                </Grid>
+
+            </Grid>
+        </Container>
     );
 }
 

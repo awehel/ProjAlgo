@@ -1,9 +1,13 @@
 import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import AppBar from "./AppBar";
+import NavBar from "./NavBar";
 import Users from "./Users"
 import MyContext from "../context/MyContext";
+import Typography from '@mui/material/Typography'
+import { Container, Grid } from "@mui/material";
+import { Paper } from "@mui/material";
+import ShowCard from "./ShowCard";
 
 const Home = (props)=>{
 
@@ -32,11 +36,20 @@ const Home = (props)=>{
         getShows();
     }, [setShowData]);
 
+    
+
     return(
         
-        <div>
-            <AppBar/>
-            <h1>Home Page</h1>
+        <Container>
+            <NavBar/>
+            <Typography 
+                variant="h3" 
+                component="div"
+                color="textSecondary" 
+                gutterBottom
+            >
+                Home Page
+            </Typography>
             
             {
                 context.loggedIn?
@@ -44,21 +57,26 @@ const Home = (props)=>{
             }
             <Users/>
             
+            <Grid container spacing={2}>
             {
                 loaded?
                 showData.map((show, index)=>(
-                <div key={index}>
-                    <img src={
-                        show.backdrop_path?
-                        `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
-                    :'https://static.vecteezy.com/system/resources/thumbnails/002/267/298/small/tv-show-neon-signs-style-text-free-vector.jpg'
-                    } alt={`${show.name}`}/>
-                    <Link to={`/show/${show.id}`}><h2>{show.name}</h2></Link>
-                    
-                </div>
+                <Grid item md={3} sm={6} xs={12} key={index}>
+                    <ShowCard show={show}/>
+                    {/* <Paper>
+                        <Link to={`/show/${show.id}`}><img src={
+                            show.backdrop_path?
+                            `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
+                        :'https://static.vecteezy.com/system/resources/thumbnails/002/267/298/small/tv-show-neon-signs-style-text-free-vector.jpg'
+                        } alt={`${show.name}`}/>
+                        <Typography variant="h5" gutterBottom>{show.name}</Typography></Link>
+                    </Paper> */}
+                </Grid>
                 )):null
             }
-        </div>
+
+            </Grid>
+        </Container>
     )
 }
 

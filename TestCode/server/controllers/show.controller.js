@@ -138,6 +138,93 @@ module.exports = {
                 })
         }
             
+    },
+
+    deleteShow : (req, res)=>{
+        
+        // const newShowObject = new Show(req.body);
+
+        // const decodedJWT = jwt.decode(req.cookies.usertoken, {
+        //     complete: true,
+        // });
+
+        // const userId = decodedJWT.payload.id;
+        // const userName = decodedJWT.payload.userName;
+
+        // console.log("userId: " + userId);
+        // console.log("userName: " + userName);
+
+        // const testSave2 = async () => {
+        //     try {
+        //         let show = await Show.findOne({ _id: req.params.id });
+        //         let activeUser = await User.find({ username: userName });
+
+        //         if (!show) {
+        //             newShowObject.savedBy = userId;
+
+        //             newShowObject
+        //                 .save()
+        //                 .then((newShow) => {
+        //                     console.log(newShow);
+        //                     res.json(newShow);
+        //                 })
+        //                 .catch((err) => {
+        //                     console.log(req.body);
+        //                     console.log("testShow failed");
+        //                     res.status(400).json(err);
+        //                 });
+        //         } else {
+        //             let updatedShow = await Show.findOneAndUpdate(
+        //                 { name: req.body.name },
+        //                 { $pull: { savedBy: userId } },
+        //                 { new: true }
+        //             )
+        //                 .then((newShow) => {
+        //                     console.log(newShow);
+        //                     res.json(newShow);
+        //                 })
+        //                 .catch((err) => {
+        //                     console.log("testSave " + err);
+        //                 });
+        //             // activeUser.showsLiked.push(updatedShow)
+        //             // activeUser = await activeUser.save()
+        //             // updatedShow.savedBy.push(activeUser)
+        //             // updatedShow = updatedShow.save()
+
+        //             return updatedShow;
+        //         }
+        //     } catch (e) {}
+        // };
+
+        // testSave2();
+        
+        
+        // console.log(req)
+
+        Show.findOneAndUpdate({name: req.params.name}, 
+            {"$pull" : {savedBy: req.jwtpayload.id}}, 
+            {new:true})
+            .then((newShow)=>{
+                console.log(newShow)
+                res.json(newShow)
+            })
+            .catch((err)=>{
+                console.log(err.res.data)
+            })
+        
+
+        // Show.updateOne({name:req.params.name}, 
+        //     {$pull:{'savedBy': {_id:userId}}}, 
+        //     {new:true})
+        // .then((updatedShow)=>{
+        //     console.log(updatedShow)
+        //     res.json(updatedShow)
+        // })
+        // .catch((err)=>{
+        //     console.log("Error in deleteShow")
+        //     res.status(400).json(err)
+        // })
+
     }
 
     

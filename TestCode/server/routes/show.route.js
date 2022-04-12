@@ -6,4 +6,5 @@ module.exports = (app)=>{
     app.get("/api/show/:name", ShowController.getOneShow)
     app.get("/api/showsbyuser/:username", authenticate, ShowController.getAllShowsByUser)
     app.post("/api/test", authenticate, ShowController.saveOrUpdate )
+    app.post("/api/edit/:name", authenticate, ShowController.deleteShow)
 }

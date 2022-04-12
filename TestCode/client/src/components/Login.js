@@ -1,7 +1,14 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import { TextField } from "@mui/material";
 import MyContext from "../context/MyContext";
+
+
+
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -37,33 +44,52 @@ const Login = (props) => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+        <Container>
+            <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 5 }}>
+                Login
+            </Typography>
+            <Typography color="error" sx={{ marginBottom: 3}}>
+                {errorMessage ? errorMessage : ""}
+            </Typography>
             <form onSubmit={login}>
                 <div>
-                    <label>Email</label>
-                    <input
+                    {/* <label>Email</label> */}
+                    <TextField
                         type="text"
                         name="email"
                         value={email}
+                        variant="outlined"
+                        label="Email"
+                        required
+                        margin="normal"
+                        // sx={{ marginBottom: 3 }}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Password</label>
-                    <input
+                    {/* <label>Password</label> */}
+                    <TextField
                         type="password"
                         name="password"
                         value={password}
+                        variant="outlined"
+                        label="Password"
+                        required
+                        margin="normal"
+                        // sx={{ marginBottom: 3 }}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div className="center">
-                    <button>Sign In</button>
+                    <Button type="Submit" variant="contained" sx={{marginTop:3}}>
+                        Sign In
+                    </Button>
                 </div>
             </form>
-        </div>
+            <Typography sx={{ marginTop: 3 }}>
+                <Link to={"/register"}>Don't have an account? Sign up</Link>
+            </Typography>
+        </Container>
     );
 };
 

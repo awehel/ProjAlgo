@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Register = (props) => {
     const [confirmReg, setConfirmReg] = useState("");
@@ -44,35 +48,42 @@ const Register = (props) => {
     };
 
     return (
-        <div>
-            <h1>Register</h1>
+        <Container>
+            <Typography variant="h3" sx={{marginBottom: 3, marginTop:5}}>Register</Typography>
             {confirmReg ? (
                 <h4 style={{ color: "green" }}>{confirmReg}</h4>
             ) : null}
             <form onSubmit={register}>
                 <div>
-                    <label>Username</label>
+                    {/* <label>Username</label> */}
                     {errors.username ? (
-                        <span className="error-text">
+                        <Typography color="error" sx={{marginBotton: 2}}>
                             {errors.username.message}
-                        </span>
+                        </Typography>
                     ) : null}
-                    <input
+                    <TextField
                         type="text"
                         name="username"
                         value={user.username}
-                        //long hand notation
+                        variant="outlined"
+                        label="Username"
+                        required
+                        sx={{marginBottom: 3}}
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
                 <div>
-                    <label>Email</label>
+                    {/* <label>Email</label> */}
                     {errors.email ? (
-                        <span className="error-text">
+                        <Typography color="error" sx={{marginBotton: 2}}>
                             {errors.email.message}
-                        </span>
+                        </Typography>
                     ) : null}
-                    <input
+                    <TextField
+                        variant="outlined"
+                        required
+                        sx={{marginBottom: 3}}
+                        label="Email"
                         type="email"
                         name="email"
                         value={user.email}
@@ -80,13 +91,17 @@ const Register = (props) => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    {/* <label>Password</label> */}
                     {errors.password ? (
-                        <span className="error-text">
+                        <Typography color="error" sx={{marginBotton: 2}}>
                             {errors.password.message}
-                        </span>
+                        </Typography>
                     ) : null}
-                    <input
+                    <TextField
+                        variant="outlined"
+                        required
+                        sx={{marginBottom: 3}}
+                        label="Password"
                         type="password"
                         name="password"
                         value={user.password}
@@ -94,13 +109,17 @@ const Register = (props) => {
                     />
                 </div>
                 <div>
-                    <label>Confirm Password</label>
+                    {/* <label>Confirm Password</label> */}
                     {errors.confirmPassword ? (
-                        <span className="error-text">
+                        <Typography color="error" sx={{marginBotton: 2}}>
                             {errors.confirmPassword.message}
-                        </span>
+                        </Typography>
                     ) : null}
-                    <input
+                    <TextField
+                        variant="outlined"
+                        required
+                        sx={{marginBottom: 3}}
+                        label="Confirm Password"
                         type="password"
                         name="confirmPassword"
                         value={user.confirmPassword}
@@ -108,10 +127,10 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="center">
-                    <button>Register Me</button>
+                    <Button type="submit" variant="contained">Register Me</Button>
                 </div>
             </form>
-        </div>
+        </Container>
     );
 };
 

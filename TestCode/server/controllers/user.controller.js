@@ -108,7 +108,7 @@ module.exports = {
     },
 
     seekOne: (req, res) =>{
-        User.findById({_id:id})
+        User.findOne({username:req.params.username})
         .then((user)=>{
             console.log(user)
             res.json(user)

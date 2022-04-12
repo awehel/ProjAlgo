@@ -38,32 +38,32 @@ const Home = (props)=>{
 
     
 
-    return(
-        
-        <Container>
-            <NavBar/>
-            <Typography 
-                variant="h3" 
-                component="div"
-                color="textSecondary" 
-                gutterBottom
-            >
-                Home Page
-            </Typography>
-            
-            {
-                context.loggedIn?
-                <Link to="/search"><p>Search for a show</p></Link>:null
-            }
-            <Users/>
-            
-            <Grid container spacing={2}>
-            {
-                loaded?
-                showData.map((show, index)=>(
-                <Grid item md={3} sm={6} xs={12} key={index}>
-                    <ShowCard show={show}/>
-                    {/* <Paper>
+    return (
+        <div>
+            <NavBar />
+            <Container>
+                <Typography
+                    variant="h3"
+                    component="div"
+                    color="textSecondary"
+                    gutterBottom
+                >
+                    Home Page
+                </Typography>
+
+                {context.loggedIn ? (
+                    <Link to="/search">
+                        <p>Search for a show</p>
+                    </Link>
+                ) : null}
+                <Users />
+
+                <Grid container spacing={2}>
+                    {loaded
+                        ? showData.map((show, index) => (
+                              <Grid item md={3} sm={6} xs={12} key={index}>
+                                  <ShowCard show={show} />
+                                  {/* <Paper>
                         <Link to={`/show/${show.id}`}><img src={
                             show.backdrop_path?
                             `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
@@ -71,13 +71,13 @@ const Home = (props)=>{
                         } alt={`${show.name}`}/>
                         <Typography variant="h5" gutterBottom>{show.name}</Typography></Link>
                     </Paper> */}
+                              </Grid>
+                          ))
+                        : null}
                 </Grid>
-                )):null
-            }
-
-            </Grid>
-        </Container>
-    )
+            </Container>
+        </div>
+    );
 }
 
 export default Home

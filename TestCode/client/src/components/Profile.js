@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./NavBar";
+import Comments from "./Comments";
+import Wall from "./Wall";
 
 
 const Profile = (props)=>{
@@ -11,8 +13,13 @@ const Profile = (props)=>{
     const [showList, setShowList] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [user, setUser] = useState({});
+    const [comment, setComment] = useState({})
+    const [baseUser, setBaseUser] = useState({})
 
     const navigate = useNavigate()
+
+    const activeUserId = user._id
+    const baseUserId = baseUser._id
     
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/showsbyuser/${username}`, {
@@ -40,6 +47,22 @@ const Profile = (props)=>{
             });
     }, []);
 
+    useEffect(() => {
+        const getHomeUser = async () => {
+            try {
+                const resp = await axios.get(
+                    `http://localhost:8000/api/users/${username}`
+                );
+                console.log(resp.data);
+                setBaseUser(resp.data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getHomeUser();
+    }, []);
+
     const submitHandler = (nameFromBelow, activeUser) => {
         
         axios
@@ -63,6 +86,7 @@ const Profile = (props)=>{
             <NavBar/>
             <h1>{username}'s page</h1>
             <Link to="/"><p>Home</p></Link>
+            <div>
             {
                 loaded?
                 showList.map((show, index)=>(
@@ -84,6 +108,21 @@ const Profile = (props)=>{
                     </div>
                 )):null
             }
+
+            </div>
+            <div>
+                {
+                    loaded?
+                    <div>
+                        <Comments activeUser={activeUserId} baseUser={baseUserId}/>
+                        <Wall userId={baseUserId}/>
+                    </div>
+                    :null
+                }
+            </div>
+            
+            
+            
         </div>
     )
 

@@ -7,4 +7,5 @@ module.exports = (app) => {
     app.post("/api/users/logout", UserController.logout);
     app.get("/api/users", authenticate, UserController.getLoggedInUser);
     app.get("/api/allusers", UserController.findAllUsers);
+    app.get("/api/users/:username", UserController.seekOne)
 };

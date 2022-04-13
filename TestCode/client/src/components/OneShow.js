@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import NavBar from "./NavBar";
+import { Link } from "@mui/material";
 
 
 const OneShow = (props)=>{
@@ -49,46 +50,100 @@ const OneShow = (props)=>{
             });
     }
 
-    
-
     return (
-        <Container sx={{backgroundColor: '#F0F8ED', height:'100vh', width:'100vw'}}>
-            
-            <NavBar/>
-            <Typography 
-                value="newName" 
-                variant="h4"
-                style={{fontWeight:600}}
-                >
-                {oneShow.name}
-            </Typography>
-            <Button variant="contained" color="secondary" gutterBottom href="/" startIcon={<HomeIcon/>}>
-                Home
-            </Button>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} md={6}> 
-                    <img
-                        src={`https://image.tmdb.org/t/p/w500${oneShow.backdrop_path}`}
-                        alt={oneShow.name}
-                    />
-                    <Button
-                        variant="contained"
-                        size="medium"
-                        onClick={submitHandler}
-                        startIcon={<AddIcon/>}
-                    >
-                        Add show
-                    </Button>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6}>
-                    <Typography variant="subtitle1">{oneShow.overview}</Typography>
-                    <Typography variant="subtitle2">"{oneShow.tagline}"</Typography>
-                    <br/>
-                    
+        <div>
+            <NavBar />
+            <Container sx={{}}>
+                <Grid container spacing={1} alignItems='end' justifyContent='center'>
+                    <Grid item>
+                        <Typography
+                            value="newName"
+                            variant="h4"
+                            style={{ fontWeight: 600 }}
+                            sx={{ margin: 3 }}
+                        >
+                            {oneShow.name}
+                        </Typography>
+
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            variant="contained"
+                            size="medium"
+                            onClick={submitHandler}
+                            startIcon={<AddIcon />}
+                            sx={{ marginBottom: 3 }}
+                        >
+                            Add show
+                        </Button>
+
+                    </Grid>
                 </Grid>
 
-            </Grid>
-        </Container>
+                <Grid container spacing={4}>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${oneShow.poster_path}`}
+                            alt={oneShow.name}
+                            height="550"
+                            width="366"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                        <Box>
+                            <Typography
+                                variant="h6"
+                                align="left"
+                                marginBottom={1}
+                            >
+                                About the Show
+                            </Typography>
+                            <Typography
+                                variant="subtitle1"
+                                align="left"
+                                marginBottom={1}
+                            >
+                                {oneShow.overview}
+                            </Typography>
+                            <Typography
+                                variant="subtitle2"
+                                align="left"
+                                marginBottom={2}
+                            >
+                                "{oneShow.tagline}"
+                            </Typography>
+                            <Typography
+                                variant="subtitle1"
+                                fontWeight="500"
+                                align="left"
+                            >
+                                First Aired:{" "}
+                                <Box component="span" fontWeight="400">
+                                    {oneShow.first_air_date}
+                                </Box>
+                            </Typography>
+                            <Typography
+                                variant="subtitle1"
+                                fontWeight="500"
+                                align="left"
+                            >
+                                Currently in Production?:{" "}
+                                <Box component="span" fontWeight="400">
+                                    {oneShow.in_production ? "Yes" : "No"}
+                                </Box>
+                            </Typography>
+                            <Typography
+                                variant="subtitle1"
+                                fontWeight="500"
+                                align="left"
+                            >
+                                <Link href={oneShow.homepage}>Watch Now</Link>
+                            </Typography>
+                        </Box>
+                    </Grid>
+                </Grid>
+            </Container>
+        </div>
     );
 }
 

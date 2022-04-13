@@ -5,7 +5,9 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import Wall from "./Wall";
+import { Grid } from "@mui/material";
 
 const Comments = (props)=>{
 
@@ -85,7 +87,7 @@ const Comments = (props)=>{
         .then((res)=>{
             console.log(res)
             console.log(res.data)
-            navigate("/")
+            window.location.reload()
         })
         .catch((err)=>{
             console.log(err.response.data)
@@ -101,39 +103,53 @@ const Comments = (props)=>{
 
     return (
         <Container>
-            <div>
+            <Grid
+                sx={{
+                    
+                }}
+            >
+                <Grid item>
+
+                </Grid>
                 <form onSubmit={submitComment}>
-                    <TextField 
-                        sx={{marginTop:5}}
-                        type='text'
+                    <TextField
+                        sx={{
+                            marginTop: 5,
+                            input: { color: "primary" },
+                            background: "white",
+                        }}
+                        type="text"
                         name="message"
-                        label='Comment'
+                        label="Comment"
                         variant="outlined"
-                        onChange={(e)=> setMessage(e.target.value)}
-                        />
+                        fullWidth
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
                     <input
                         type="hidden"
                         name="author"
                         // value={activeUserid}
                     />
-                    <input 
+                    <input
                         type="hidden"
                         name="receiver"
                         // value={baseUserid}
                     />
 
-                    <div>
-                        <Button type='Submit' variant="contained" sx={{marginTop:1}}>Comment</Button>    
-                    </div>
-
+                    <Button
+                        type="Submit"
+                        variant="contained"
+                        sx={{ marginTop: 1 }}
+                    >
+                        Comment
+                    </Button>
                 </form>
                 {/* <Typography>
                     {activeUser.username} on {baseUser.username}'s wall
                 </Typography> */}
-                
-            </div>
+            </Grid>
         </Container>
-    )
+    );
 }
 
 export default Comments

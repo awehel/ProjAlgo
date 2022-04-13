@@ -6,7 +6,7 @@ const ShowSchema = new mongoose.Schema(
             type:String,
             required: [true, "Show name is required"]
         },
-        backdrop_path:{
+        poster_path:{
             type:String,
             required: true
         },

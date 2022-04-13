@@ -1,6 +1,16 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
+import NavBar from "./NavBar";
+import ShowCard from "./ShowCard";
+import Typography from "@mui/material/Typography";
+import { Container, Grid, TextField } from "@mui/material";
+import { Paper } from "@mui/material";
+import { Box } from "@mui/system";
+import { Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Divider } from "@mui/material";
+
 
 const Search = (props)=>{
 
@@ -32,29 +42,56 @@ const Search = (props)=>{
 
     return (
         <div>
-            <form onSubmit={submitHandler}>
-                <label>Search for TV Show:</label>
-                <input 
-                    onChange={inputHandler}
-                    type='text'
-                    name="searchTerm"
-                />
-                <input type="submit" value="Search" />
-            </form>
-            {
-                loaded?
-                results.map((show, index)=>(
-                    <div key={index}>
-                        <Link to={`/show/${show.id}`}>
-                            <h2>{show.name}</h2>
-                            </Link>
-                    </div>
-                ))
-                :null
-            }
+            <NavBar />
+            <Container
+                sx={{
+                    
+                }}
+                maxWidth="false"
+            >
+                
+                <Box>
 
+                    <Typography color="inherit">Search for TV Show:</Typography>
+                    <form onSubmit={submitHandler}>
+                        <TextField
+                            onChange={inputHandler}
+                            type="text"
+                            name="searchTerm"
+                        />
+                        <Button
+                            type="Submit"
+                            variant="contained"
+                            endIcon={<SearchIcon />}
+                        >
+                            Search
+                        </Button>
+                    </form>
+                </Box>
+                <Divider sx={{margin:3}}/>
+                <Grid container spacing={2}>
+                    {loaded? 
+                        results.map((show, index) => (
+                            show.poster_path?
+                            <Grid item md={12/5} sm={6} xs={12} key={index}>
+                                <ShowCard show={show} />
+                            </Grid>:null
+                        ))
+                        : null}
+                </Grid>
+
+                {/* {loaded
+                    ? results.map((show, index) => (
+                          <div key={index}>
+                              <Link to={`/show/${show.id}`}>
+                                  <h2>{show.name}</h2>
+                              </Link>
+                          </div>
+                      ))
+                    : null} */}
+            </Container>
         </div>
-    )
+    );
 }
 
 export default Search

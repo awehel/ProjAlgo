@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Link } from "@mui/material";
 import { Avatar } from "@mui/material";
-import { deepOrange, green } from "@mui/material/colors";
+import { deepOrange, orange } from "@mui/material/colors";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 
@@ -70,51 +70,50 @@ const NavBar = (props) =>{
 
 
     return (
-        <Box sx={{ flexGrow: 1, alignItems: 'center' }}>
+        <Box sx={{ flexGrow: 1, alignItems: "center" }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="div"
-                        sx={{ display: { sm: "block" } }}
-                    >
-                        Shows
-                    </Typography>
-                    <Box sx={{flexGrow: 1}}>
-
+                    <Link href="/" underline="none" color="inherit">
+                        <Typography
+                            variant="h4"
+                            noWrap
+                            component="div"
+                            sx={{ display: { sm: "block", marginLeft: 20 } }}
+                        >
+                            ShowTracker
+                        </Typography>
+                    </Link>
+                    <Box sx={{ flexGrow: 1 }}>
                         <Link href="/search" underline="none" color="inherit">
-                            Search for a TV Show <SearchIcon />
+                            Search <SearchIcon />
                         </Link>
                     </Box>
                     <Box sx={{ flexGrow: 1 }} />
-                    {user.username? (
-                        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                    {user.username ? (
+                        <Box sx={{ display: { md: "flex" },  }}>
                             <Button
                                 onClick={logout}
                                 type="submit"
-                                endIcon={<LogoutIcon/>}
+                                endIcon={<LogoutIcon />}
                                 color="secondary"
-                            >
-                                Logout
-                            </Button>
-                            <IconButton
-                                size="large"
-                                edge="end"
-                                color="inherit"
-                            >
-                            <Avatar 
-                                alt={user.username} 
-                                src="placeholder.jpg"
-                                sx={{bgcolor:deepOrange[500]}}
+                                sx={{marginRight:3}}
                                 
-                                />
-                                {/* <AccountCircle /> */}
-                            </IconButton>
+                            >Logout</Button>
+                            
+                            <Link href={`/user/${user.username}`} underline="none">
+                                <IconButton size="large" edge="end" color="inherit">
+                                    <Avatar
+                                        alt={user.username}
+                                        src="placeholder.jpg"
+                                        sx={{ bgcolor: orange[500] }}
+                                    />
+                                    {/* <AccountCircle /> */}
+                                </IconButton>
+                            </Link>
                         </Box>
                     ) : (
                         <Link href="/login" underline="none" color="inherit">
-                            Login
+                            Sign In
                         </Link>
                     )}
                 </Toolbar>

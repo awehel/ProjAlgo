@@ -25,6 +25,7 @@ class SLL {
         let removedNode = this.head
         this.head = removedNode.next
         removedNode.next = null
+        return this
     }
 
     front(){
@@ -37,3 +38,8 @@ class SLL {
     }
 }
 
+var mySLL = new SLL()
+mySLL.addFront(5)
+mySLL.addFront(10)
+console.log(mySLL.head.next)
+console.log(mySLL.front())

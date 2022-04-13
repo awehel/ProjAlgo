@@ -4,6 +4,16 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import Comments from "./Comments";
 import Wall from "./Wall";
+import { Container } from "@mui/material";
+import { Grid } from "@mui/material";
+import { ImageList } from "@mui/material";
+import { ImageListItem } from "@mui/material";
+import { Card } from "@mui/material";
+import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Divider } from "@mui/material";
 
 
 const Profile = (props)=>{
@@ -83,49 +93,74 @@ const Profile = (props)=>{
 
     return (
         <div>
-            <NavBar/>
-            <h1>{username}'s page</h1>
-            <Link to="/"><p>Home</p></Link>
-            <div>
-            {
-                loaded?
-                showList.map((show, index)=>(
-                    <div key={index}>
-                        <h3>{show.name}</h3>
-                        <img src={
-                        show.backdrop_path?
-                        `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
-                    :'https://static.vecteezy.com/system/resources/thumbnails/002/267/298/small/tv-show-neon-signs-style-text-free-vector.jpg'
-                    } alt={`${show.name}`}/>
-                    {
-                        // show.savedBy.find(entry => entry.username === `${user.username}` )?
-                        // <p>Test</p>:null
-                        `${username}` === `${user.username}`?
-                        
-                        <button onClick={()=>submitHandler(`${show.name}`, user)}>Delete</button>:null
+            <NavBar />
 
-                    }
-                    </div>
-                )):null
-            }
-
-            </div>
-            <div>
-                {
-                    loaded?
-                    <div>
-                        <Comments activeUser={activeUserId} baseUser={baseUserId}/>
-                        <Wall userId={baseUserId}/>
-                    </div>
-                    :null
-                }
-            </div>
-            
-            
-            
+            <Container>
+                <h1>{username}'s Shows</h1>
+                
+                <Grid container spacing={6}>
+                    <Grid item xs={9} md={8}>
+                        {loaded ? (
+                            <Grid container spacing={3}>
+                                {showList.map((show, index) => (
+                                    <Grid item key={index} xs={12} md={4}>
+                                        <Card>
+                                            <CardMedia
+                                                component='img'
+                                                image={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
+                                            />
+                                            {
+                                                `${username}` === `${user.username}`?
+                                                <CardActions
+                                                    sx={{background:'black'}}
+                                                >
+                                                    <Button sx={{color:'orange'}} onClick={()=>submitHandler(`${show.name}`, user)}>Delete</Button>
+                                                </CardActions>
+                                                :null
+                                            }
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        ) : null}
+                    </Grid>
+                    <Grid xs={12} item md={4}>
+                        {loaded ? (
+                            <div>
+                                <Comments
+                                    activeUser={activeUserId}
+                                    baseUser={baseUserId}
+                                />
+                                <Wall userId={baseUserId} />
+                            </div>
+                        ) : null}
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
-    )
+    );
 
 }
 
 export default Profile
+
+
+//   showList.map((show, index)=>(
+//                                 <Card sx={{maxWidth:250}} key={index}>
+//                                     {/* <h3>{show.name}</h3> */}
+//                                     <CardMedia 
+//                                         component='img'
+//                                         alt={`${show.name}`}
+//                                         image={`https://image.tmdb.org/t/p/w500${show.poster_path}` } />
+//                                 {
+                                    // show.savedBy.find(entry => entry.username === `${user.username}` )?
+                                    // <p>Test</p>:null
+                                //     `${username}` === `${user.username}`?
+                                //     <CardActions>
+                                //         <button onClick={()=>submitHandler(`${show.name}`, user)}>Delete</button>
+                                //     </CardActions>
+                                //     :null
+
+                                // }
+//                                 </Card>
+//                             )):

@@ -56,5 +56,46 @@ module.exports = {
             console.log(err)
             res.status(400).json(err)
         })
+    },
+
+    getOneComment: (req, res)=>{
+        Comment.findOne({_id:req.params.id})
+        .populate("receiver author", "username")
+        .then((oneComment)=>{
+            console.log(oneComment)
+            res.json(oneComment)
+        })
+        .catch((err)=>{
+            console.log("Find one comment failed")
+            res.json({message:'Something went wrong in getOneComment', error:err})
+        })
+    },
+
+    updateComment: (req, res)=>{
+        console.log(req.body)
+        Comment.findOneAndUpdate({_id:req.params.id}, req.body, {
+            new:true,
+            runValidators:true
+        })
+        .then((updatedComment)=>{
+            console.log(updatedComment)
+            res.json(updatedComment)
+        })
+        .catch((err)=>{
+            console.log("updateComment failed")
+            res.status(400).json(err)
+        })
+    },
+
+    deleteComment: (req, res)=>{
+        Comment.deleteOne({_id:req.params.id})
+        .then((deletedPet)=>{
+            console.log(deletedPet)
+            res.json(deletedPet)
+        })
+        .catch((err)=>{
+            console.log("deleteComment failed")
+            res.json({message:'Something went wrong deleting comment', error:err})
+        })
     }
 }

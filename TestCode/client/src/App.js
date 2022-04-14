@@ -7,6 +7,7 @@ import Search from './components/Search';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
+import EditComment from './components/EditComment';
 import Layout from './components/Layout';
 import MyContext from './context/MyContext';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -45,6 +46,7 @@ const theme = createTheme({
 function App() {
     
     const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedInUser, setLoggedInUser] = useState({})
 
     return (
         <ThemeProvider theme={theme}>
@@ -52,20 +54,21 @@ function App() {
 
                 <BrowserRouter>
                     <div className="App">
-                        <MyContext.Provider value={{ loggedIn, setLoggedIn }}>
+                        <MyContext.Provider value={{ loggedInUser, setLoggedInUser }}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/show/:id" element={<OneShow />} />
                                 <Route
                                     path="/user/:username"
                                     element={<Profile />}
-                                    />
+                                />
                                 <Route path="/search" element={<Search />} />
                                 <Route path="/login" element={<Login />} />
                                 <Route
                                     path="/register"
                                     element={<Register />}
-                                    />
+                                />
+                                <Route path="/comment/edit/:id" element={<EditComment/>}/>
                             </Routes>
                         </MyContext.Provider>
                     </div>

@@ -104,7 +104,7 @@ const Profile = (props)=>{
                             <Grid container spacing={3}>
                                 {showList.map((show, index) => (
                                     <Grid item key={index} xs={12} md={4}>
-                                        <Card>
+                                        <Card elevation={5}>
                                             <CardMedia
                                                 component='img'
                                                 image={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
@@ -131,7 +131,7 @@ const Profile = (props)=>{
                                     activeUser={activeUserId}
                                     baseUser={baseUserId}
                                 />
-                                <Wall userId={baseUserId} />
+                                <Wall userId={baseUserId} pUser={activeUserId} />
                             </div>
                         ) : null}
                     </Grid>

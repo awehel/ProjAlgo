@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 import { TextField } from "@mui/material";
+import { Link } from "@mui/material";
 
 const Register = (props) => {
     const [confirmReg, setConfirmReg] = useState("");
@@ -49,7 +50,9 @@ const Register = (props) => {
 
     return (
         <Container>
-            <Typography variant="h3" sx={{marginBottom: 3, marginTop:5}}>Register</Typography>
+            <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 5 }}>
+                Register
+            </Typography>
             {confirmReg ? (
                 <h4 style={{ color: "green" }}>{confirmReg}</h4>
             ) : null}
@@ -57,7 +60,7 @@ const Register = (props) => {
                 <div>
                     {/* <label>Username</label> */}
                     {errors.username ? (
-                        <Typography color="error" sx={{marginBotton: 2}}>
+                        <Typography color="error" sx={{ marginBotton: 2 }}>
                             {errors.username.message}
                         </Typography>
                     ) : null}
@@ -68,21 +71,21 @@ const Register = (props) => {
                         variant="outlined"
                         label="Username"
                         required
-                        sx={{marginBottom: 3}}
+                        sx={{ marginBottom: 3 }}
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
                 <div>
                     {/* <label>Email</label> */}
                     {errors.email ? (
-                        <Typography color="error" sx={{marginBotton: 2}}>
+                        <Typography color="error" sx={{ marginBotton: 2 }}>
                             {errors.email.message}
                         </Typography>
                     ) : null}
                     <TextField
                         variant="outlined"
                         required
-                        sx={{marginBottom: 3}}
+                        sx={{ marginBottom: 3 }}
                         label="Email"
                         type="email"
                         name="email"
@@ -93,14 +96,14 @@ const Register = (props) => {
                 <div>
                     {/* <label>Password</label> */}
                     {errors.password ? (
-                        <Typography color="error" sx={{marginBotton: 2}}>
+                        <Typography color="error" sx={{ marginBotton: 2 }}>
                             {errors.password.message}
                         </Typography>
                     ) : null}
                     <TextField
                         variant="outlined"
                         required
-                        sx={{marginBottom: 3}}
+                        sx={{ marginBottom: 3 }}
                         label="Password"
                         type="password"
                         name="password"
@@ -111,14 +114,14 @@ const Register = (props) => {
                 <div>
                     {/* <label>Confirm Password</label> */}
                     {errors.confirmPassword ? (
-                        <Typography color="error" sx={{marginBotton: 2}}>
+                        <Typography color="error" sx={{ marginBotton: 2 }}>
                             {errors.confirmPassword.message}
                         </Typography>
                     ) : null}
                     <TextField
                         variant="outlined"
                         required
-                        sx={{marginBottom: 3}}
+                        sx={{ marginBottom: 3 }}
                         label="Confirm Password"
                         type="password"
                         name="confirmPassword"
@@ -127,9 +130,14 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="center">
-                    <Button type="submit" variant="contained">Register Me</Button>
+                    <Button type="submit" variant="contained">
+                        Register Me
+                    </Button>
                 </div>
             </form>
+            <Typography sx={{ marginTop: 3 }}>
+                <Link href={"/login"}>Already have an account? Sign in</Link>
+            </Typography>
         </Container>
     );
 };

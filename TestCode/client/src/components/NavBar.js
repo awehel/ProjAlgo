@@ -51,6 +51,7 @@ const NavBar = (props) =>{
         .then((res)=>{
             console.log(res.data)
             setUser(res.data)
+            context.setLoggedInUser(user)
         })
         .catch((err)=>{
             console.log(err)

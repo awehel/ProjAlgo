@@ -34,7 +34,7 @@ const Login = (props) => {
             .then((res) => {
                 console.log(res, "res");
                 console.log(res.data, "is res data!");
-                context.loggedIn = true
+                
                 navigate("/");
             })
             .catch((err) => {

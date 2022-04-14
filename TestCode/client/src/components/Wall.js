@@ -89,7 +89,7 @@ const Wall = (props)=>{
                 <List>
                     {messages.map((message, index) => (
                         <div key={index}>
-                            <ListItem sx={{ background: "white" }}>
+                            <ListItem  sx={{ background: "white" }}>
                                 <ListItemAvatar>
                                     <Link href={`/user/${message.author.username}`} underline='none'><Avatar
                                         {...stringAvatar(

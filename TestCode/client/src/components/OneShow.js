@@ -80,7 +80,7 @@ const OneShow = (props)=>{
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={4}>
+                <Grid container spacing={2}>
                     <Grid item xs={12} sm={12} md={6}>
                         <img
                             src={`https://image.tmdb.org/t/p/w500${oneShow.poster_path}`}

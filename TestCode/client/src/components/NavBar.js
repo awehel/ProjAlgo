@@ -100,8 +100,12 @@ const NavBar = (props) =>{
                             variant="h4"
                             noWrap
                             component="div"
-                            fontWeight={500}
-                            sx={{ display: { sm: "block", marginLeft: 20 } }}
+                            fontWeight={600}
+                            sx={{ display: { sm: "block", marginLeft: 20 },
+                                    background: "-webkit-linear-gradient(45deg, rgba(233,150,107,1) 0%, rgba(137,204,214,1) 100%)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent" 
+                        }}
                         >
                             ShowTracker
                         </Typography>
@@ -137,7 +141,8 @@ const NavBar = (props) =>{
                             <Link href={`/user/${user.username}`} underline="none">
                                 <IconButton size="large" edge="end" color="inherit">
                                     <Avatar
-                                        {...stringAvatar(user.username)}
+                                        // {...stringAvatar(user.username)}
+                                        sx={{bgcolor:'#eaac8b'}}
                                         alt={user.username}
                                         src="placeholder.jpg"
                                         // sx={{ bgcolor: orange[500] }}

@@ -16,20 +16,17 @@ import { CssBaseline } from '@mui/material';
 const theme = createTheme({
     palette:{
         primary:{
-            main:'#1D3557'
+            main:'#023047'
         },
         secondary:{
-            main:'#A8DADC'
+            main:'#eaac8b'
         },
         background:{
-            default:'#dcd9d3'
+            default:'#dceaec'
         }
     },
     typography:{
         fontFamily: 'Satoshi'
-    },
-    background:{
-        default:'red'
     },
     overides:{
         CssBaseline:{

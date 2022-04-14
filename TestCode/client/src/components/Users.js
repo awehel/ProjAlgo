@@ -6,6 +6,9 @@ import NavBar from "./NavBar";
 import { Box, Typography } from "@mui/material";
 import { Chip } from "@mui/material";
 import { Avatar } from "@mui/material";
+import { Button } from "@mui/material";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import { Grid } from "@mui/material";
 
 
 const UserList = (props)=>{
@@ -37,27 +40,37 @@ const UserList = (props)=>{
             <NavBar/>
             <Box sx={{marginTop:4}}>
                 <Typography variant="h4" fontWeight={700} sx={{marginBottom:3}}>Discover other users</Typography>
-
+                <Grid justifyContent='center' container sx={{p:3, m:3}}>
                 {
                     listLoaded?
                     userList.map((user, index)=>(
-                        <Link href={`/user/${user.username}`} underline="hover">
-                            <Chip
-                                avatar={<Avatar alt={user.username} src="/static.jpg" size='large'/>}
-                                key={index}
-                                label={user.username}
-                                size="large"
-                                color={
-                                    index%2===0?
-                                    'primary':'secondary'
-                                }
-                                sx={{m:2, p:2}}
-                                
-                            />
-                            </Link>
+                        
+                            <Grid item>
+
+                                <Link href={`/user/${user.username}`}>
+                                <Button
+                                    variant="contained"
+                                    color={
+                                        index%2===0?
+                                        'primary':'secondary'
+                                    }
+                                    startIcon={<PermIdentityIcon/>}
+                                    sx={{
+                                        borderRadius:25,
+                                        width:175,
+                                        height:50,
+                                        m:3,
+                                        p:3
+                                    }}
+                                >{user.username}</Button>
+                                </Link>
+                            </Grid>
+                            
                     )):null
         
                 }
+
+                </Grid>
             </Box>
         </div>
     )

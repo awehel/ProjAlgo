@@ -104,7 +104,7 @@ const Profile = (props)=>{
                             <Grid container spacing={3}>
                                 {showList.map((show, index) => (
                                     <Grid item key={index} xs={12} md={4}>
-                                        <Card elevation={5}>
+                                        <Card sx={{borderRadius:3}} elevation={5}>
                                             <CardMedia
                                                 component='img'
                                                 image={`https://image.tmdb.org/t/p/w500${show.poster_path}`}
@@ -112,9 +112,9 @@ const Profile = (props)=>{
                                             {
                                                 `${username}` === `${user.username}`?
                                                 <CardActions
-                                                    sx={{background:'black'}}
+                                                    sx={{background:'#023047'}}
                                                 >
-                                                    <Button sx={{color:'orange'}} onClick={()=>submitHandler(`${show.name}`, user)}>Delete</Button>
+                                                    <Button size="large" sx={{color:'#eaac8b'}} onClick={()=>submitHandler(`${show.name}`, user)}>Delete</Button>
                                                 </CardActions>
                                                 :null
                                             }

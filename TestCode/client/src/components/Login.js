@@ -47,10 +47,10 @@ const Login = (props) => {
     };
 
     return (
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" alignItems="center">
             
             <Box sx={{background:'white', p:3, marginTop:10, borderRadius:10, width:'40vw'}}>
-                <Typography variant="h4" sx={{ marginBottom: 3, marginTop: 5 }}>
+                <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 5 }}>
                     Login <LiveTvIcon fontSize="large"/>
                 </Typography>
                 <Typography color="error" sx={{ marginBottom: 3}}>

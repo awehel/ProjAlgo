@@ -16,7 +16,7 @@ const ShowCard = (props)=>{
 
     return (
         <div>
-                <Card elevation={2} sx={{}}>
+                <Card elevation={3} sx={{borderRadius:3}}>
                     <Link to={`/show/${show.id}`} underline="none">
                         <CardMedia 
                             component="img"

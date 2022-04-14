@@ -114,8 +114,8 @@ const Comments = (props)=>{
                 <form onSubmit={submitComment}>
                     <TextField
                         sx={{
-                            marginTop: 5,
-                            input: { color: "primary" },
+                            // marginTop: 5,
+                            input: { color: "secondary" },
                             background: "white",
                         }}
                         type="text"

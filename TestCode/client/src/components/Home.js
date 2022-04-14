@@ -49,28 +49,28 @@ const Home = (props)=>{
                 maxWidth="false"
             >
                 <Container>
-                    <Typography
+                    {/* <Typography
                         variant="h3"
                         component="div"
                         color="textSecondary"
                         gutterBottom
                     >
                         Home Page
-                    </Typography>
+                    </Typography> */}
 
-                    {context.loggedIn ? (
+                    {/* {context.loggedIn ? (
                         <Link to="/search">
                             <p>Search for a show</p>
                         </Link>
-                    ) : null}
-                    <Users />
+                    ) : null} */}
+                    
 
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} sx={{marginTop:5}}>
                         {loaded
                             ? showData.map((show, index) => (
-                                  <Grid item md={3} sm={6} xs={12} key={index}>
-                                      <ShowCard show={show} />
-                                      {/* <Paper>
+                                <Grid item md={3} sm={6} xs={12} key={index}>
+                                    <ShowCard show={show} />
+                                    {/* <Paper>
                             <Link to={`/show/${show.id}`}><img src={
                                 show.backdrop_path?
                                 `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
@@ -78,8 +78,8 @@ const Home = (props)=>{
                             } alt={`${show.name}`}/>
                             <Typography variant="h5" gutterBottom>{show.name}</Typography></Link>
                         </Paper> */}
-                                  </Grid>
-                              ))
+                                </Grid>
+                            ))
                             : null}
                     </Grid>
                 </Container>

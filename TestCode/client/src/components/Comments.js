@@ -120,7 +120,7 @@ const Comments = (props)=>{
                         }}
                         type="text"
                         name="message"
-                        label="Comment"
+                        label="Leave a comment"
                         variant="outlined"
                         fullWidth
                         onChange={(e) => setMessage(e.target.value)}
@@ -137,6 +137,7 @@ const Comments = (props)=>{
                     />
 
                     <Button
+                        disabled={message?false:true}
                         type="Submit"
                         variant="contained"
                         sx={{ marginTop: 1 }}

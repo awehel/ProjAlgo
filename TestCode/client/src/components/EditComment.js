@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 
 const EditComment = (props)=>{
@@ -37,15 +41,24 @@ const EditComment = (props)=>{
     return(
         <div>
             <NavBar/>
-            <form onSubmit={submitHandler}> 
-                <label>Message:</label>
-                <input
-                    value={message}
-                    onChange={(e)=>setMessage(e.target.value)}
-                    type='text'
-                />
-               <button>Submit</button>
-            </form>
+            <Box sx={{marginBlock:6, padding:2, alignContent:'center'}}>
+                <form onSubmit={submitHandler}> 
+                    <Typography variant="h6" sx={{marginBottom:3}}>Edit Message:</Typography>
+                    <TextField
+                        value={message}
+                        onChange={(e)=>setMessage(e.target.value)}
+                        type='text'
+                        sx={{background: "white", input: {color:'primary', p:2}}}
+                    />
+                <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    sx={{marginInline:2}}
+                >Submit</Button>
+                </form>
+
+            </Box>
         </div>
     )
 }

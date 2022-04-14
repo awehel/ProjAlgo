@@ -9,6 +9,9 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import MyContext from "../context/MyContext";
 import { Link } from "@mui/material";
+import { Button } from "@mui/material";
+import { ButtonGroup } from "@mui/material";
+import { display } from "@mui/system";
 
 
 const Wall = (props)=>{
@@ -101,7 +104,7 @@ const Wall = (props)=>{
                                     secondary={
                                         <React.Fragment>
                                             <Typography
-                                                sx={{ display: "inline" }}
+                                                sx={{ display: "inline", marginRight:1 }}
                                                 component="span"
                                                 variant="body2"
                                                 color="text.primary"
@@ -113,9 +116,9 @@ const Wall = (props)=>{
                                 />
                                 {
                                     message.author._id === pUserId?
-                                    <div>
-                                        <Link href={`/comment/edit/${message._id}`}><button>Edit </button></Link>
-                                        <button onClick={()=>deleteComment(message._id)}>Delete</button>
+                                    <div >
+                                        <Link href={`/comment/edit/${message._id}`}><Button variant="contained" size="small" sx={{marginBottom:1, display:'block'}}>Edit </Button></Link>
+                                        <Button onClick={()=>deleteComment(message._id)} variant="contained" size="small" color="error">Delete</Button>
                                     </div>
                                     :null
                                 }

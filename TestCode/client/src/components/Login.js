@@ -5,6 +5,9 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 import { TextField } from "@mui/material";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
+import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import MyContext from "../context/MyContext";
 
 
@@ -44,52 +47,56 @@ const Login = (props) => {
     };
 
     return (
-        <Container>
-            <Typography variant="h3" sx={{ marginBottom: 3, marginTop: 5 }}>
-                Login
-            </Typography>
-            <Typography color="error" sx={{ marginBottom: 3}}>
-                {errorMessage ? errorMessage : ""}
-            </Typography>
-            <form onSubmit={login}>
-                <div>
-                    {/* <label>Email</label> */}
-                    <TextField
-                        type="text"
-                        name="email"
-                        value={email}
-                        variant="outlined"
-                        label="Email"
-                        required
-                        margin="normal"
-                        // sx={{ marginBottom: 3 }}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    {/* <label>Password</label> */}
-                    <TextField
-                        type="password"
-                        name="password"
-                        value={password}
-                        variant="outlined"
-                        label="Password"
-                        required
-                        margin="normal"
-                        // sx={{ marginBottom: 3 }}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="center">
-                    <Button type="Submit" variant="contained" sx={{marginTop:3}}>
-                        Sign In
-                    </Button>
-                </div>
-            </form>
-            <Typography sx={{ marginTop: 3 }}>
-                <Link to={"/register"}>Don't have an account? Sign up</Link>
-            </Typography>
-        </Container>
+        <Grid container justifyContent="center">
+            
+            <Box sx={{background:'white', p:3, marginTop:10, borderRadius:10, width:'40vw'}}>
+                <Typography variant="h4" sx={{ marginBottom: 3, marginTop: 5 }}>
+                    Login <LiveTvIcon fontSize="large"/>
+                </Typography>
+                <Typography color="error" sx={{ marginBottom: 3}}>
+                    {errorMessage ? errorMessage : ""}
+                </Typography>
+                <form onSubmit={login}>
+                    <div>
+                        {/* <label>Email</label> */}
+                        <TextField
+                            type="text"
+                            name="email"
+                            value={email}
+                            variant="outlined"
+                            label="Email"
+                            required
+                            margin="normal"
+                            // sx={{ marginBottom: 3 }}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        {/* <label>Password</label> */}
+                        <TextField
+                            type="password"
+                            name="password"
+                            value={password}
+                            variant="outlined"
+                            label="Password"
+                            required
+                            margin="normal"
+                            // sx={{ marginBottom: 3 }}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="center">
+                        <Button type="Submit" variant="contained" sx={{marginTop:3}}>
+                            Sign In
+                        </Button>
+                    </div>
+                </form>
+                <Typography sx={{ marginTop: 3 }}>
+                    <Link to={"/register"}>Don't have an account? Sign up</Link>
+                </Typography>
+
+            </Box>
+        </Grid>
     );
 };
 

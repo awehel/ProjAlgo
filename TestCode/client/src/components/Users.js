@@ -1,7 +1,12 @@
 import React, {useEffect, useState, useContext} from "react";
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from "@mui/material";
 import MyContext from "../context/MyContext";
+import NavBar from "./NavBar";
+import { Box, Typography } from "@mui/material";
+import { Chip } from "@mui/material";
+import { Avatar } from "@mui/material";
+
 
 const UserList = (props)=>{
     const [userList, setUserList] = useState()
@@ -26,17 +31,34 @@ const UserList = (props)=>{
         getUsers()
     }, [])
 
-
+        
     return (
         <div>
-            Users:
-            {
-                listLoaded?
-                userList.map((user, index)=>(
-                    <p key={index}><Link to={`/user/${user.username}`}>{user.username}</Link></p>
-                )):null
-    
-            }
+            <NavBar/>
+            <Box sx={{marginTop:4}}>
+                <Typography variant="h4" fontWeight={700} sx={{marginBottom:3}}>Discover other users</Typography>
+
+                {
+                    listLoaded?
+                    userList.map((user, index)=>(
+                        <Link href={`/user/${user.username}`} underline="hover">
+                            <Chip
+                                avatar={<Avatar alt={user.username} src="/static.jpg" size='large'/>}
+                                key={index}
+                                label={user.username}
+                                size="large"
+                                color={
+                                    index%2===0?
+                                    'primary':'secondary'
+                                }
+                                sx={{m:2, p:2}}
+                                
+                            />
+                            </Link>
+                    )):null
+        
+                }
+            </Box>
         </div>
     )
 }

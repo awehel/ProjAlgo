@@ -99,7 +99,7 @@ const Profile = (props)=>{
                 <h1>{username}'s Shows</h1>
                 
                 <Grid container spacing={6}>
-                    <Grid item xs={9} md={8}>
+                    <Grid item xs={10} md={8}>
                         {loaded ? (
                             <Grid container spacing={3}>
                                 {showList.map((show, index) => (

@@ -8,7 +8,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import EditComment from './components/EditComment';
-import Layout from './components/Layout';
+import UserList from './components/Users';
 import MyContext from './context/MyContext';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
@@ -26,7 +26,7 @@ const theme = createTheme({
         }
     },
     typography:{
-        fontFamily: 'Poppins'
+        fontFamily: 'Satoshi'
     },
     background:{
         default:'red'
@@ -69,6 +69,7 @@ function App() {
                                     element={<Register />}
                                 />
                                 <Route path="/comment/edit/:id" element={<EditComment/>}/>
+                                <Route path="/users" element={<UserList/>} />
                             </Routes>
                         </MyContext.Provider>
                     </div>

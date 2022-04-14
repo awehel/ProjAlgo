@@ -45,23 +45,25 @@ const Search = (props)=>{
             <NavBar />
             <Container
                 sx={{
-                    
+                    marginBlock:4, padding:2
                 }}
                 maxWidth="false"
             >
                 
-                <Box>
-
-                    <Typography color="inherit">Search for TV Show:</Typography>
+                <Box sx={{alignContent:'center'}}>
                     <form onSubmit={submitHandler}>
                         <TextField
                             onChange={inputHandler}
                             type="text"
                             name="searchTerm"
+                            placeholder="Search for a TV show..."
+                            sx={{background:'white', input:{color:'primary'}}}
                         />
                         <Button
                             type="Submit"
                             variant="contained"
+                            size="large"
+                            sx={{marginInline:2}}
                             endIcon={<SearchIcon />}
                         >
                             Search

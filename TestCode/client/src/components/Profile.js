@@ -114,7 +114,7 @@ const Profile = (props)=>{
                                                 <CardActions
                                                     sx={{background:'#023047'}}
                                                 >
-                                                    <Button size="large" sx={{color:'#eaac8b'}} onClick={()=>submitHandler(`${show.name}`, user)}>Delete</Button>
+                                                    <Button size="medium" sx={{color:'#eaac8b'}} onClick={()=>submitHandler(`${show.name}`, user)}>Delete</Button>
                                                 </CardActions>
                                                 :null
                                             }
